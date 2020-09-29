@@ -143,6 +143,7 @@ interface BackupPrintContainerProps {
 
 function BackupPrintContainer(props: BackupPrintContainerProps) {
   const classes = useBackupPrintStyles()
+  const { t } = useTranslation()
 
   return (
     <Box className={classes.printContainer}>
@@ -154,7 +155,7 @@ function BackupPrintContainer(props: BackupPrintContainerProps) {
           <div className={classes.qrWrapper}>
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start" }}>
               <Typography className={classes.qrCaption} variant="h4">
-                Public Key
+                {t("account-settings.export-key.info.print.public-key")}
               </Typography>
               <QRCode value={props.publicKey} size={200} />
             </div>
@@ -164,21 +165,21 @@ function BackupPrintContainer(props: BackupPrintContainerProps) {
         <div style={{ alignSelf: "center" }}>
           <SolarIcon className={classes.icon} />
           <Typography>Solar Wallet</Typography>
-          <Typography>Paper Backup</Typography>
+          <Typography>{t("account-settings.export-key.info.print.paper-backup")}</Typography>
         </div>
         <div className={classes.qrWrapper}>
           <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-end" }}>
             <QRCode value={props.secretKey} size={200} />
             <Typography className={classes.qrCaption} variant="h4">
-              Secret Key
+              {t("account-settings.export-key.info.print.secret-key")}
             </Typography>
           </div>
           <Typography className={classes.keyTypography}>{props.secretKey}</Typography>
         </div>
       </div>
       <Typography align="center">
-        This is a backup of your account. <br /> Make sure to keep it in a safe place because anyone who has access to
-        it can access your account.
+        {t("account-settings.export-key.info.print.warning.1")} <br />
+        {t("account-settings.export-key.info.print.warning.2")}
       </Typography>
     </Box>
   )
